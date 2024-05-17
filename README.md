@@ -1,24 +1,24 @@
 # Kamstrup-Radius component for ESPHome
- ESPHome component for Kamstrup electricity meter provided by Radius in Denmark.
+ESPHome component for Kamstrup electricity meters provided by Radius in Denmark.
 
-This project replaces https://github.com/Asbjoern/Kamstrup-Radius-Interface
+This project replaces [Kamstrup-Radius-Interface.](https://github.com/Asbjoern/Kamstrup-Radius-Interface)
 
 ## This project uses:
 * Relevant files from mbed TLS library https://tls.mbed.org/
 * Modified mbusparser library from Jalla2000's norwegian project https://github.com/jalla2000/kamstrup-mqtt
 
 ## Hardware: 
-Just connect any 3.3v ESP module's RX pin to the HAN DATA_OUT pin. And GND to GND.
+Connect any 3.3V ESP module's RX pin to the HAN DATA_OUT pin, and GND to GND.\
 ![HAN port](img/han.png "HAN port")\
-Or better yet use a HAN module with an ESP module. There are many designs out there.\
+Alternatively, use a HAN module with an ESP module. There are many designs available..\
 ![HAN module](img/module.jpg "HAN module")\
-This design with ESP8266 is compatible with the example file can be found in https://github.com/Asbjoern/Kamstrup-Radius-Interface/tree/master/pcb.
-Since the HAN port only allows 75mA power draw there is a circuit to limit the power and charge a super cap for peak currents. Also the ESP module is supplied with a lower voltage to limit the overall power drawn.\
-This eliminated the need for sleep modes.\
-Heartbeat and Fault LED is not implemented in this component to make it universally compatible.
+A design with ESP8266 compatible with the example file can be found in https://github.com/Asbjoern/Kamstrup-Radius-Interface/tree/master/pcb.
+Since the HAN port only allows a 75mA power draw, there is a circuit to limit the power and charge a supercapacitor for peak currents. The ESP module is supplied with a lower voltage to limit the overall power drawn, eliminating the need for sleep modes.
+
+Please note that the Heartbeat and Fault LED are not implemented in this component to ensure universal compatibility.
 
 ## Configuration:
-See [example_kamstrup-radius.yaml](example_kamstrup-radius.yaml) for full configuration file compatible with the module above.
+See [example_kamstrup-radius.yaml](example_kamstrup-radius.yaml) for the full configuration file compatible with the module above..
 
 ```
 external_components:
@@ -94,5 +94,4 @@ sensor:
       name: "Reactive energy Export"
 ```
 
-Only **encryptionkey** and **authenticationkey** are required.\
-The rest is optional and dependant on what data is wanted.
+Only **encryptionkey** and **authenticationkey** are required. The rest is optional and depends on what data is needed.
