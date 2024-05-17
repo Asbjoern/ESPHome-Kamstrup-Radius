@@ -1,0 +1,93 @@
+esphome:
+  name: elmaler
+  friendly_name: Elmåler
+
+external_components:
+  source: github://Asbjoern/ESPHome-Kamstrup-Radius@main
+
+esp8266:
+  board: esp12e
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "xx"
+
+ota:
+  password: "xx"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+uart:
+  rx_pin: GPIO13
+  baud_rate: 2400
+
+sensor:
+  - platform: kamstrup-radius
+    encryptionkey: "5AD84121D9D20B364B7A11F3C1B5827F"
+    authenticationkey: "AFB3F93E3E7204EDB3C27F96DBD51AE0"
+    activepowerimport:
+      name: "Active power Import"
+    activepowerexport:
+      name: "Active power Export"
+    activepowerimportl1:
+      name: "Active power Import L1"
+    activepowerexportl1:
+      name: "Active power Export L1"
+    activepowerimportl2:
+      name: "Active power Import L2"
+    activepowerexportl2:
+      name: "Active power Export L2"
+    activepowerimportl3:
+      name: "Active power Import L3"
+    activepowerexportl3:
+      name: "Active power Export L3"
+    reactivepowerimport:
+      name: "Reactive power Import"
+    reactivepowerexport:
+      name: "Reactive power Export"
+    powerfactorl1:
+      name: "Power factor L1"
+    powerfactorl2:
+      name: "Power factor L2"
+    powerfactorl3:
+      name: "Power factor L3"
+    powerfactortotal:
+      name: "Power factor Total"
+    voltagel1:
+      name: "RMS voltage L1"
+    voltagel2:
+      name: "RMS voltage L2"
+    voltagel3:
+      name: "RMS voltage L3"
+    currentl1:
+      name: "RMS current L1"
+    currentl2:
+      name: "RMS current L2"
+    currentl3:
+      name: "RMS current L3" 
+    activeenergyimport:
+      name: "Active energy Import"
+    activeenergyexport:
+      name: "Active energy Export"
+    activeenergyimportl1:
+      name: "Active energy Import L1"
+    activeenergyexportl1:
+      name: "Active energy Export L1"
+    activeenergyimportl2:
+      name: "Active energy Import L2"
+    activeenergyexportl2:
+      name: "Active energy Export L2"
+    activeenergyimportl3:
+      name: "Active energy Import L3"
+    activeenergyexportl3:
+      name: "Active energy Export L3"
+    reactiveenergyimport:
+      name: "Reactive energy Import"
+    reactiveenergyexport:
+      name: "Reactive energy Export"
