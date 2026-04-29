@@ -4,7 +4,9 @@
 #include "esphome/components/sensor/sensor.h"
 #include "esphome/components/uart/uart.h"
 #include <stdlib.h>
-#include "gcm.h"
+#define MBEDTLS_CONFIG_FILE "mbedtls/esp_config.h"
+#include "mbedtls/gcm.h"
+#include "mbedtls/cipher.h"
 #include "mbusparser.h"
 
 namespace esphome {
@@ -14,8 +16,8 @@ class KamstrupRadiusSensor : public sensor::Sensor, public Component, public uar
  public:
   void loop() override;
   void dump_config() override;
-  void set_encryption_key(String key) { hexStr2bArr(encryption_key, key.c_str(), sizeof(encryption_key)); }
-  void set_authentication_key(String key){ hexStr2bArr(authentication_key, key.c_str(), sizeof(authentication_key)); }
+  void set_encryption_key(std::string key) { hexStr2bArr(encryption_key, key.c_str(), sizeof(encryption_key)); }
+  void set_authentication_key(std::string key){ hexStr2bArr(authentication_key, key.c_str(), sizeof(authentication_key)); }
 
   void set_activepowerimport_sensor(sensor::Sensor *obj) { activepowerimport_sensor_ = obj; }
   void set_activepowerexport_sensor(sensor::Sensor *obj) { activepowerexport_sensor_ = obj; }

@@ -231,13 +231,13 @@ CONFIG_SCHEMA = (
                 unit_of_measurement=UNIT_VOLT_AMPS_REACTIVE_HOURS,
                 accuracy_decimals=2,
                 device_class=DEVICE_CLASS_ENERGY,
-                state_class=STATE_CLASS_TOTAL_INCREASING,
+                state_class=STATE_CLASS_MEASUREMENT,
             ),
             cv.Optional(CONF_REACTIVEENERGYEXPORT): sensor.sensor_schema(
                 unit_of_measurement=UNIT_VOLT_AMPS_REACTIVE_HOURS,
                 accuracy_decimals=2,
                 device_class=DEVICE_CLASS_ENERGY,
-                state_class=STATE_CLASS_TOTAL_INCREASING,
+                state_class=STATE_CLASS_MEASUREMENT,
             )
         }
     ).extend(uart.UART_DEVICE_SCHEMA)
