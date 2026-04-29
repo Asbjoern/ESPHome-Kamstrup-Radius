@@ -2,23 +2,26 @@
 ESPHome component for Kamstrup electricity meters provided by Radius in Denmark.
 
 This project replaces [Kamstrup-Radius-Interface.](https://github.com/Asbjoern/Kamstrup-Radius-Interface)
+Be aware that ESP8266 version is in another branch. This branch is ESP32 only.
 
 ## This project uses:
-* Relevant files from mbed TLS library https://tls.mbed.org/
 * Modified mbusparser library from Jalla2000's norwegian project https://github.com/jalla2000/kamstrup-mqtt
 
 ## Hardware: 
 Connect any 3.3V ESP module's RX pin to the HAN DATA_OUT pin, and GND to GND.\
 ![HAN port](img/han.png "HAN port")\
+Since the HAN port only allows a 75mA power draw a WiFi ESP module cannot be directly powered from the port.\ There are two possibilities for port powered operation.\
+Using Thread instead of WiFi the ESP32-H2 keep the power budget down. Beware that only the ESP32-H2 has a low enought power consumption. \
+![esp32h2](img/esp32h2.jpg "HAN module")\
 Alternatively, use a HAN module with an ESP module. There are many designs available..\
 ![HAN module](img/module.jpg "HAN module")\
 A design with ESP8266 compatible with the example file can be found in https://github.com/Asbjoern/Kamstrup-Radius-Interface/tree/master/pcb.
-Since the HAN port only allows a 75mA power draw, there is a circuit to limit the power and charge a supercapacitor for peak currents. The ESP module is supplied with a lower voltage to limit the overall power drawn, eliminating the need for sleep modes.
+There is a circuit to limit the power to 75mA and charge a supercapacitor for peak currents. The ESP module is supplied with a lower voltage to limit the overall power drawn, eliminating the need for sleep modes.
 
 Please note that the Heartbeat and Fault LED are not implemented in this component to ensure universal compatibility.
 
 ## Configuration:
-See [example_kamstrup-radius.yaml](example_kamstrup-radius.yaml) for the full configuration file compatible with the module above..
+See example_kamstrup-radius-*.yaml files for the full configuration of different compatible modules.
 
 ```
 external_components:

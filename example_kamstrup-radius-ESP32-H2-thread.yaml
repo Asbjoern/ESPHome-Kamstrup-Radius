@@ -1,0 +1,80 @@
+esphome:
+  name: "elmaler"
+  friendly_name: Elmåler
+
+esp32:
+  board: esp32-h2-devkitm-1
+  framework:
+    type: esp-idf
+
+external_components:
+  source: github://Asbjoern/ESPHome-Kamstrup-Radius@main
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+
+api:
+  encryption:
+    key: "xx"
+
+ota:
+  - platform: esphome
+    password: "xx"
+
+network:
+  enable_ipv6: true
+
+openthread:
+  device_type: FTD
+  tlv: !secret tlv
+  
+uart:
+  rx_pin: GPIO14
+  baud_rate: 2400
+
+sensor: 
+  - platform: kamstrup-radius
+    encryptionkey: "5AD84121D9D20B364B7A11F3C1B5827F"
+    authenticationkey: "AFB3F93E3E7204EDB3C27F96DBD51AE0"
+    activepowerimport:
+      name: "Active power Import"
+    activepowerimportl1:
+      name: "Active power Import L1"
+    activepowerimportl2:
+      name: "Active power Import L2"
+    activepowerimportl3:
+      name: "Active power Import L3"
+    reactivepowerimport:
+      name: "Reactive power Import"
+    reactivepowerexport:
+      name: "Reactive power Export"
+    powerfactorl1:
+      name: "Power factor L1"
+    powerfactorl2:
+      name: "Power factor L2"
+    powerfactorl3:
+      name: "Power factor L3"
+    powerfactortotal:
+      name: "Power factor Total"
+    voltagel1:
+      name: "RMS voltage L1"
+    voltagel2:
+      name: "RMS voltage L2"
+    voltagel3:
+      name: "RMS voltage L3"
+    currentl1:
+      name: "RMS current L1"
+    currentl2:
+      name: "RMS current L2"
+    currentl3:
+      name: "RMS current L3" 
+    activeenergyimport:
+      name: "Active energy Import"
+    activeenergyimportl1:
+      name: "Active energy Import L1"
+    activeenergyimportl2:
+      name: "Active energy Import L2"
+    activeenergyimportl3:
+      name: "Active energy Import L3"
